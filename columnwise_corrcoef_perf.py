@@ -25,7 +25,7 @@ def newColumnWiseCorrcoef(O, P):
 # using an outer loop for comparing performance
 # P is here a matrix of all m predicitions
 # C is an pre-allocated (m,t) attay for correlation traces of t sampels
-def loopedNewColumnWiseCorrcoed(O, P, C):
+def loopedNewColumnWiseCorrcoef(O, P, C):
     for i in range(0,256):
         C[i] = newColumnWiseCorrcoef(O, P[:,i])
 
@@ -110,7 +110,7 @@ def testCorrectnessBis():
     P = np.random.rand(int(1E3), 256)
     C = np.zeros((256, int(1E2)))
 
-    loopedNewColumnWiseCorrcoed(O, P, C)
+    loopedNewColumnWiseCorrcoef(O, P, C)
     Z = AlmightyCorrcoefEinsum(O,P)
 
     if np.allclose(C,Z):
@@ -119,18 +119,22 @@ def testCorrectnessBis():
         print("Test failed")
 
 
-# create random input arrays
+if __name__ == '__main__':
+
+    import timeit
+    import sys
+
+    # system information
+    print("Python: " + sys.version)
+    print("Numpy : " + np.version.version)
+    np.__config__.show()
+
+    # setup snippet
+    timingSetup = """
+import numpy as np
+from __main__ import AlmightyCorrcoefEinsum
 O = np.random.rand(int(1E5),int(1E3))
 P = np.random.rand(int(1E5), 256)
-#C = np.zeros((256, int(1E3)))
-
-# check computational correctness
-#old = ColumnWiseCorrcoef(O,P)
-#new = newColumnWiseCorrcoef(O,P)
-#np.allclose(old,new)
-
-#timeit ColumnWiseCorrcoefNaive(O, P)
-
-#timeit ColumnWiseCorrcoef(O,P)
-
-#timeit newColumnWiseCorrcoef(O,P)
+"""
+    # timing
+    print(min(timeit.repeat("AlmightyCorrcoefEinsum(O, P)", setup=timingSetup, repeat=3, number=1)))

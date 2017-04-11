@@ -4,7 +4,12 @@
 #
 # Ilya Kizhvatov, with help from Cees-Bart Breunesse
 
+# system information
+versioninfo()
+
+# setup
 O = rand(Float64, 100000, 1000)
 P = rand(Float64, 100000, 256)
 
+# timing
 @time cor(O, P)

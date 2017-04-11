@@ -15,13 +15,7 @@ julia 0.5.1: 2.623510 seconds (846.50 k allocations: 993.003 MB, 4.86% gc time)
 
 ## Running the timings
 
-For python, so far from ipython console
-```python
-%run columnwise_corrcoef_perf.py
-%timeit AlmightyCorrcoefEinsum(O,P)
-```
+Required: numpy.
 
-For julia, do
-```
-julia columnwise_corrcoef_perf.jl 
-```
+```python columnwise_corrcoef_perf.jl```
+```julia columnwise_corrcoef_perf.jl```
