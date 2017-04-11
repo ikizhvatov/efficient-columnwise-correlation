@@ -1,19 +1,27 @@
 # Performance of column-wise correlation coefficient
 #
 # http://stackoverflow.com/questions/19401078/efficient-columnwise-correlation-coefficient-calculation-with-numpy
+#
+# Ilya Kizhvatov, stackoverflow community (see attribution below) 
 
 import numpy as np
 
+### Functions for correlating matrix to a column
+# O - (n,t) array of observations: n traces with t samples each
+# P - column of n predictions
+
+# initial version, copied from my Matlab code
 def ColumnWiseCorrcoef(O, P):
     n = P.size
     DO = O - (np.sum(O, 0) / np.double(n))
     DP = P - (np.sum(P) / np.double(n))
     return np.dot(DP, DO) / np.sqrt(np.sum(DO ** 2, 0) * np.sum(DP ** 2))
 
+# the slow naive version using the built-in function
 def ColumnWiseCorrcoefNaive(O, P):
     return np.corrcoef(P,O.T)[0,1:O[0].size+1]
 
-# from user Daniel at stackoverflow.com
+# improvement over the initial one from Daniel at stackoverflow.com
 def newColumnWiseCorrcoef(O, P):
     n = P.size
     DO = O - (np.einsum('ij->j',O) / np.double(n))
@@ -22,20 +30,18 @@ def newColumnWiseCorrcoef(O, P):
     tmp *= np.einsum('i,i->',P,P)          #Dot or vdot doesnt really change much.
     return np.dot(P, DO) / np.sqrt(tmp)
 
-# using an outer loop for comparing performance
-# P is here a matrix of all m predicitions
-# C is an pre-allocated (m,t) attay for correlation traces of t sampels
+
+### Functions for correlating matrix to a matrix
+# O - (n,t) array of observations: n traces with t samples each
+# P - (n,m) array of n predictions for each of the m candidates
+# C - (optional) pre-allocated (m,t) array for correlation traces of length t for each of the m candidates
+
+# Naively using an outer loop with the function from above, as a reference for comparing performance
 def loopedNewColumnWiseCorrcoef(O, P, C):
     for i in range(0,256):
         C[i] = newColumnWiseCorrcoef(O, P[:,i])
 
-
-# In the Almghty series, P is not a row but a matrix of predicions
-# O - (n,t) array of n traces with t samples each
-# P - (n,m) array of n predictions for each of the m candidates
-# C - (optional) pre-allocated (m,t) array for correlation traces of length t for each of the m candidates
-
-# this one has the naive loop over columns of P
+# this one has the naive loop over columns of P internally
 def AlmightyCorrcoefNaive(O, P, C):
     (n, t) = O.shape      # n traces of t samples
     (n_bis, m) = P.shape  # n predictions for each of m candidates
