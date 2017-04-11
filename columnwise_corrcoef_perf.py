@@ -120,8 +120,9 @@ def testCorrectnessBis():
 
 
 # create random input arrays
-#O = np.random.rand(int(1E5),int(1E3))
-#P = np.random.rand(int(1E5), 256)
+O = np.random.rand(int(1E5),int(1E3))
+P = np.random.rand(int(1E5), 256)
+#C = np.zeros((256, int(1E3)))
 
 # check computational correctness
 #old = ColumnWiseCorrcoef(O,P)
