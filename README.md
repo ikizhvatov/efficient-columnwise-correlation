@@ -15,7 +15,8 @@ julia 0.5.1: 2.623510 seconds (846.50 k allocations: 993.003 MB, 4.86% gc time)
 
 ## Running the timings
 
-Required: numpy.
+Required: numpy
 
 ```python columnwise_corrcoef_perf.jl```
+
 ```julia columnwise_corrcoef_perf.jl```
