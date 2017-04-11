@@ -11,9 +11,9 @@ So far, it appears that one line of code in Julia is almost 5 times faster than 
 Machine: i7-5650U 2.2 GHz, 8GB 1600 MHz DDR3, 512 GB PCIe SSD, Mac OS 10.12.4
 
 | Version                                     | Time, s |
-| ------------------------------------------- |:------- |
+|:------------------------------------------- |:------- |
 | python 2.7.13 with numpy 1.12.1 (anaconda)  | 12.1    | 
-| julia 0.5.1                                 | 2.6.    |
+| julia 0.5.1                                 | 2.6     |
 
 ## Running the timings
 
