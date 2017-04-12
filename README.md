@@ -27,6 +27,6 @@ Required: numpy
 
 python 3.6.1 with numpy 1.11.3 (anaconda): 12.1 s
 
-python 2.7.10 with numpy 1.8.0rc1 (came default on MacOS): 12.4 s
+python 2.7.10 with numpy 1.8.0rc1 (came default on MacOS): 12.1 s
 
 julia 0.5.1: 2.623510 seconds (846.50 k allocations: 993.003 MB, 4.86% gc time)

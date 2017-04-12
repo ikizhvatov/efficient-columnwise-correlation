@@ -22,6 +22,7 @@ def ColumnWiseCorrcoefNaive(O, P):
     return np.corrcoef(P,O.T)[0,1:O[0].size+1]
 
 # improvement over the initial one from Daniel at stackoverflow.com
+# note that it modifies P  (however, the gain in performance from it appears to be insignificant)
 def newColumnWiseCorrcoef(O, P):
     n = P.size
     DO = O - (np.einsum('ij->j',O) / np.double(n))
