@@ -1,8 +1,8 @@
 # Efficient columnwise correlation
 
-Efficient ways to compute Pearson's correlation between columns of two matrices in numpy (and beyond)
+Efficient ways to compute Pearson's correlation between columns of two matrices in numpy and other scientific computing languages.
 
-See http://stackoverflow.com/questions/19401078/efficient-columnwise-correlation-coefficient-calculation-with-numpy for the initial discussion
+See http://stackoverflow.com/questions/19401078/efficient-columnwise-correlation-coefficient-calculation-with-numpy for the initial discussion.
 
 So far, it appears that one line of code in Julia is almost 5 times faster than 5 lines of code in Python (numpy MKL) doing the same thing.
 
@@ -14,14 +14,19 @@ Machine: i7-5650U 2.2 GHz, 8GB 1600 MHz DDR3, 512 GB PCIe SSD, Mac OS 10.12.4
 |:------------------------------------------- |:------- |
 | python 2.7.13 with numpy 1.12.1 (anaconda)  | 12.1    | 
 | julia 0.5.1                                 | 2.6     |
+| R 3.3.3                                     | 26.4    |
 
 ## Running the timings
 
-Required: numpy
+Required for python: numpy
+
+Required for R: Hmisc
 
 ```python columnwise_corrcoef_perf.py```
 
 ```julia columnwise_corrcoef_perf.jl```
+
+```Rscript columnwise_corrcoef_perf.r```
 
 ## More timings (and memory)
 
