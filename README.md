@@ -6,6 +6,8 @@ See http://stackoverflow.com/questions/19401078/efficient-columnwise-correlation
 
 So far, it appears that one line of code in Julia is almost 5 times faster than 5 lines of code in Python (numpy MKL) doing the same thing.
 
+The numpy version is used in https://github.com/ikizhvatov/pysca.
+
 ## Timings
 
 Machine: i7-5650U 2.2 GHz, 8GB 1600 MHz DDR3, 512 GB PCIe SSD, Mac OS 10.12.4
