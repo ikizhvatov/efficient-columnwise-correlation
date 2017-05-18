@@ -10,7 +10,11 @@ The numpy version is used in https://github.com/ikizhvatov/pysca.
 
 ## Timings
 
-Machine 1: i7-5650U 2.2 GHz (dual-core), 8GB 1600 MHz DDR3, 512 GB PCIe SSD, Mac OS 10.12.4
+On both machines, TurboBoost left on.
+
+### Laptop
+
+i7-5650U 2.2 GHz (dual-core), 8GB 1600 MHz DDR3, 512 GB PCIe SSD, Mac OS 10.12.4
 
 | Version                                     | Time, s |
 |:------------------------------------------- |:------- |
@@ -21,16 +25,15 @@ Machine 1: i7-5650U 2.2 GHz (dual-core), 8GB 1600 MHz DDR3, 512 GB PCIe SSD, Mac
 
 Python timings are the same for Python 3, and for default python 2.7 with numpy on Mac OS.
 
-Machine 2: i7-4790K 4.0 GHz (quad-core), 32GB 1333 MHz DDR3, 250GB SATA SSD, Linux Mint 17.3
+### Workstation
+
+i7-4790K 4.0 GHz (quad-core), 32GB 1333 MHz DDR3, 250GB SATA SSD, Linux Mint 17.3
 
 | Version                                     | Time, s |
 |:------------------------------------------- |:------- |
 | python 2.7.13 with numpy 1.12.1 (anaconda)  | 7.63    | 
 | julia 0.5.2                                 | 0.57    |
 | R 3.4.0                                     | 23.55   |
-| MATLAB R2017a                               |         |
-
-On both machines, TurboBoost and SpeedStep left in deafult setting (on).
 
 ## Running the timings
 
