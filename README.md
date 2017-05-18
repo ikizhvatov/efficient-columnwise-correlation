@@ -15,7 +15,7 @@ Machine: i7-5650U 2.2 GHz, 8GB 1600 MHz DDR3, 512 GB PCIe SSD, Mac OS 10.12.4
 | Version                                     | Time, s |
 |:------------------------------------------- |:------- |
 | python 2.7.13 with numpy 1.12.1 (anaconda)  | 12.1    | 
-| julia 0.5.1                                 | 2.6     |
+| julia 0.5.1                                 | 1.71    |
 | R 3.3.3                                     | 26.4    |
 | MATLAB R2017a                               | 1.85    |
 
@@ -43,4 +43,4 @@ python 3.6.1 with numpy 1.11.3 (anaconda): 12.1 s
 
 python 2.7.10 with numpy 1.8.0rc1 (came default on MacOS): 12.1 s
 
-julia 0.5.1: 2.623510 seconds (846.50 k allocations: 993.003 MB, 4.86% gc time)
+julia 0.5.1: 1.707247 seconds (40 allocations: 960.226 MB, 6.76% gc time)
