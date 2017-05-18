@@ -17,6 +17,7 @@ Machine: i7-5650U 2.2 GHz, 8GB 1600 MHz DDR3, 512 GB PCIe SSD, Mac OS 10.12.4
 | python 2.7.13 with numpy 1.12.1 (anaconda)  | 12.1    | 
 | julia 0.5.1                                 | 2.6     |
 | R 3.3.3                                     | 26.4    |
+| MATLAB R2017a                               | 1.85    |
 
 ## Running the timings
 
@@ -24,11 +25,17 @@ Required for python: numpy
 
 Required for R: Hmisc
 
+Required for MATLAB: Statistics and Machine Learning Toolbox
+
 ```python columnwise_corrcoef_perf.py```
 
 ```julia columnwise_corrcoef_perf.jl```
 
 ```Rscript columnwise_corrcoef_perf.r```
+
+```/Applications/MATLAB_R2017a.app/bin/matlab -nojvm -nodisplay -nosplash -r "columnwise_corrcoef_perf; exit;"```
+
+For MATLAB, the example is given for Mac OS; path needs to be adjusted depending on your platform.
 
 ## More timings (and memory)
 
