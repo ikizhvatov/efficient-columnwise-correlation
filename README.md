@@ -19,11 +19,13 @@ i7-5650U 2.2 GHz (dual-core), 8GB 1600 MHz DDR3, 512 GB PCIe SSD, Mac OS 10.12.4
 | Version                                     | Time, s |
 |:------------------------------------------- |:------- |
 | python 2.7.13 with numpy 1.12.1 (anaconda)  | 12.1    | 
-| julia 0.5.1                                 | 1.71    |
-| R 3.3.3                                     | 26.4    |
+| julia 0.5.2                                 | 1.71    |
+| R 3.4.0                                     | 36.9    |
 | MATLAB R2017a                               | 1.85    |
 
 Python timings are the same for Python 3, and for default python 2.7 with numpy on Mac OS.
+
+Surprisingly, R timing degraded in 3.4.0 compared to 3.3.3 (36 s vs 26 s), despite http://blog.revolutionanalytics.com/2017/02/preview-r-340.html.
 
 ### Workstation
 
