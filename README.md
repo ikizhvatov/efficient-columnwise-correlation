@@ -27,13 +27,14 @@ Python timings are the same for Python 3, and for default python 2.7 with numpy 
 
 ### Workstation
 
-i7-4790K 4.0 GHz (quad-core), 32GB 1333 MHz DDR3, 250GB SATA SSD, Linux Mint 17.3
+i7-4790K 4.0 GHz (quad-core), 32GB 1333 MHz DDR3, 250GB SATA SSD, Linux Mint 17.3 x64
 
 | Version                                     | Time, s |
 |:------------------------------------------- |:------- |
 | python 2.7.13 with numpy 1.12.1 (anaconda)  | 7.63    | 
 | julia 0.5.2                                 | 0.57    |
 | R 3.4.0                                     | 23.55   |
+| MATLAB R2017a                               | 1.08    |
 
 ## Running the timings
 
