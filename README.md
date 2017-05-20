@@ -16,12 +16,12 @@ The numpy version is used in https://github.com/ikizhvatov/pysca.
 
 On both machines, TurboBoost left on.
 
-| Version                                     | Laptop | Desktop | Ratio |
-|:------------------------------------------- |:------ |:--------|:----- |
-| python 2.7.13 with numpy 1.12.1 (anaconda)  | 12.1   | 7.63    | 1.6   |
-| julia 0.5.2                                 | 1.71   | 0.57    | 3.0   |
-| R 3.4.0                                     | 36.9   | 23.55   | 1.6   |
-| MATLAB R2017a                               | 1.85   | 1.08    | 1.7   |
+| Version                                     | Laptop, s  | Desktop, s | Ratio |
+|:------------------------------------------- |:---------- |:---------- |:----- |
+| python 2.7.13 with numpy 1.12.1 (anaconda)  | 12.1       | 7.63       | 1.6   |
+| julia 0.5.2                                 | 1.71       | 0.57       | 3.0   |
+| R 3.4.0                                     | 36.9       | 23.55      | 1.6   |
+| MATLAB R2017a                               | 1.85       | 1.08       | 1.7   |
 
 Python timings are the same for Python 3, and for default python 2.7 with numpy on Mac OS.
 
