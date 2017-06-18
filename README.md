@@ -44,3 +44,8 @@ Required for MATLAB: Statistics and Machine Learning Toolbox
 ```/Applications/MATLAB_R2017a.app/bin/matlab -nojvm -nodisplay -nosplash -r "columnwise_corrcoef_perf; exit;"```
 
 For MATLAB, the example is given for Mac OS; path needs to be adjusted depending on your platform.
+
+## Notes
+
+* The rough estimated performance improvement ratio when moving from laptop to desktop is 3.6 (increase in the number of cores times increase of clock speed). Interestingly, only Julia implementation is very close to this estimate, while solutions in other languages significantly lag behind.
+* The same Numpy solution (but without einsum) is described independently at https://waterprogramming.wordpress.com/2014/06/13/numpy-vectorized-correlation-coefficient/

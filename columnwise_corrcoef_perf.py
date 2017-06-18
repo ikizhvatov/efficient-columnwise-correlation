@@ -66,13 +66,13 @@ def AlmightyCorrcoef(O, P):
     DP = P - (np.sum(P, 0) / np.double(n)) # compute P - mean(P)
     # note that mean row will be appleid row-wise to original matrices
     
-    numerator = np.einsum("nt,nm->tm", DO, DP)
-    tmp1 = np.sum(DO ** 2, 0)
-    tmp2 = np.sum(DP ** 2, 0)
-    tmp = np.outer(tmp1, tmp2)
-    denominator = np.sqrt(tmp)
+    cov = np.einsum("nt,nm->tm", DO, DP)
 
-    return numerator / denominator
+    varO = np.sum(DO ** 2, 0)
+    varP = np.sum(DP ** 2, 0)
+    tmp = np.outer(varO, varP)
+
+    return cov / np.sqrt(tmp)
 
 # Here the einsum is applied to speed up the computations
 # O - (n,t) array of n traces with t samples each
@@ -85,13 +85,13 @@ def AlmightyCorrcoefEinsum(O, P):
     DO = O - (np.einsum("nt->t", O) / np.double(n)) # compute O - mean(O)
     DP = P - (np.einsum("nm->m", P) / np.double(n)) # compute P - mean(P)
     
-    numerator = np.einsum("nm,nt->mt", DP, DO)
-    tmp1 = np.einsum("nm,nm->m", DP, DP)
-    tmp2 = np.einsum("nt,nt->t", DO, DO)
-    tmp = np.einsum("m,t->mt", tmp1, tmp2)
-    denominator = np.sqrt(tmp)
+    cov = np.einsum("nm,nt->mt", DP, DO)
 
-    return numerator / denominator
+    varP = np.einsum("nm,nm->m", DP, DP)
+    varO = np.einsum("nt,nt->t", DO, DO)
+    tmp = np.einsum("m,t->mt", varP, varO)
+
+    return cov / np.sqrt(tmp)
 
 # check computation correctness
 def testCorrectness():
