@@ -4,8 +4,6 @@ Efficient ways to compute Pearson's correlation between columns of two matrices 
 
 See http://stackoverflow.com/questions/19401078/efficient-columnwise-correlation-coefficient-calculation-with-numpy for the initial discussion.
 
-So far, it appears that one line of code in Julia is almost 5 times faster than 5 lines of code in Python (numpy MKL) doing the same thing.
-
 The numpy version is used in https://github.com/ikizhvatov/pysca.
 
 ## Timings
