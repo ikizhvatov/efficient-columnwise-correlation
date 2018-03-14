@@ -23,7 +23,7 @@ On both machines, TurboBoost left on.
 | R 3.4.3         | 33         | 26.6       | 1.2   |
 | MATLAB R2017a   | 1.85       | 1.08       | 1.7   |
 
-Python timings are given for Anaconda python 3.6.4; they are similar for Python 2.7, and for default python 2.7 with numpy on Mac OS. The `optimize` option of `einsum` leads to almost 10-fold increase in speed, brining numpy on par with julia and MATLAB.
+Python timings are given for Anaconda python 3.6.4; they are similar for Python 2.7, and for default python 2.7 with numpy on Mac OS. The `optimize` option of `einsum` leads to almost 10-fold increase in speed, bringing numpy on par with julia and MATLAB.
 
 R timing degraded in 3.4.x compared to 3.3.3 (36 s vs 26 s), despite http://blog.revolutionanalytics.com/2017/02/preview-r-340.html.
 
