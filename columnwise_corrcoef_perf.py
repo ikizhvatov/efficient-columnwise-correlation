@@ -50,7 +50,6 @@ def AlmightyCorrcoefNaive(O, P, C):
     DO = O - (np.sum(O, 0) / np.double(n)) # compute O - mean(O); note that mean(O) will be appleid row-wise to O
     DP = P - (np.sum(P, 0) / np.double(n)) # compute P - mean(P)
 
-    
     for i in np.arange(0, m):
         tmp = np.sum(DO ** 2, 0)
         tmp *= np.sum(DP[:,i] ** 2)
@@ -65,7 +64,7 @@ def AlmightyCorrcoef(O, P):
     DO = O - (np.sum(O, 0) / np.double(n)) # compute O - mean(O)
     DP = P - (np.sum(P, 0) / np.double(n)) # compute P - mean(P)
     # note that mean row will be appleid row-wise to original matrices
-    
+
     cov = np.einsum("nt,nm->tm", DO, DP)
 
     varO = np.sum(DO ** 2, 0)
@@ -84,12 +83,28 @@ def AlmightyCorrcoefEinsum(O, P):
 
     DO = O - (np.einsum("nt->t", O) / np.double(n)) # compute O - mean(O)
     DP = P - (np.einsum("nm->m", P) / np.double(n)) # compute P - mean(P)
-    
+
     cov = np.einsum("nm,nt->mt", DP, DO)
 
     varP = np.einsum("nm,nm->m", DP, DP)
     varO = np.einsum("nt,nt->t", DO, DO)
     tmp = np.einsum("m,t->mt", varP, varO)
+
+    return cov / np.sqrt(tmp)
+
+# same, but with einsum optimization
+def AlmightyCorrcoefEinsumOptimized(O, P):
+    (n, t) = O.shape      # n traces of t samples
+    (n_bis, m) = P.shape  # n predictions for each of m candidates
+
+    DO = O - (np.einsum("nt->t", O, optimize='optimal') / np.double(n)) # compute O - mean(O)
+    DP = P - (np.einsum("nm->m", P, optimize='optimal') / np.double(n)) # compute P - mean(P)
+
+    cov = np.einsum("nm,nt->mt", DP, DO, optimize='optimal')
+
+    varP = np.einsum("nm,nm->m", DP, DP, optimize='optimal')
+    varO = np.einsum("nt,nt->t", DO, DO, optimize='optimal')
+    tmp = np.einsum("m,t->mt", varP, varO, optimize='optimal')
 
     return cov / np.sqrt(tmp)
 
@@ -99,7 +114,7 @@ def testCorrectness():
     O = np.random.rand(int(1E3), int(1E2))
     P = np.random.rand(int(1E3), 256)
 
-    C = AlmightyCorrcoefEinsum(O,P)
+    C = AlmightyCorrcoefEinsumOptimized(O,P)
     firstRow = ColumnWiseCorrcoef(O,P[:, 0])
     secondRow = ColumnWiseCorrcoef(O,P[:,1])
 
@@ -118,7 +133,7 @@ def testCorrectnessBis():
     C = np.zeros((256, int(1E2)))
 
     loopedNewColumnWiseCorrcoef(O, P, C)
-    Z = AlmightyCorrcoefEinsum(O,P)
+    Z = AlmightyCorrcoefEinsumOptimized(O,P)
 
     if np.allclose(C,Z):
         print("Test passed")
@@ -139,9 +154,9 @@ if __name__ == '__main__':
     # setup snippet
     timingSetup = """
 import numpy as np
-from __main__ import AlmightyCorrcoefEinsum
+from __main__ import AlmightyCorrcoefEinsumOptimized
 O = np.random.rand(int(1E5),int(1E3))
 P = np.random.rand(int(1E5), 256)
 """
     # timing
-    print(min(timeit.repeat("AlmightyCorrcoefEinsum(O, P)", setup=timingSetup, repeat=3, number=1)))
+    print(min(timeit.repeat("AlmightyCorrcoefEinsumOptimized(O, P)", setup=timingSetup, repeat=3, number=1)))
